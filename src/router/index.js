@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import CreateEQR from '../views/CreateEQR.vue'
 
 Vue.use(VueRouter)
 
@@ -11,9 +12,9 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/create',
+    name: 'CreateEQR',
+    component: CreateEQR
   }
 ]
 

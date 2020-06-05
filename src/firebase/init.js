@@ -14,6 +14,5 @@ import firebase from 'firebase'
   //export firestore database
 
   export default firebaseApp.firestore()
-  export var analytics = firebaseApp.analytics()
   export var storage = firebaseApp.storage()
   export var functions = firebaseApp.functions()
