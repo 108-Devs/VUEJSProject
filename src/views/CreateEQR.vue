@@ -11,7 +11,7 @@
             :src="fileImgPath" 
         >
         </v-img>
-        <v-card-title>
+        <v-card-title class="d-flex justify-center">
             Create an EMERGENCY QR
         </v-card-title>
         <div>
@@ -46,7 +46,7 @@
                     label="Description"
                     placeholder="Enter description"
                 ></v-textarea>
-                <p>Enter details of persons at risk</p>
+                <p v-if="placeType == 'Residential'" >Enter details of persons at risk</p>
                  <v-simple-table v-if="people.length > 0">
                     <template v-slot:default>
                     <thead>
@@ -69,7 +69,7 @@
                     </tbody>
                     </template>
                 </v-simple-table>
-                <v-btn style="margin-top: 10px;" block @click="dialog = true" color="red" dark>Add Person</v-btn>
+                <v-btn v-if="placeType == 'Residential'" style="margin-top: 10px;" block @click="dialog = true" color="red" dark>Add Person</v-btn>
             </v-card-text>
         </div>
         <v-card-actions>

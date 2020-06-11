@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "firebase": "^7.15.0",
+    "qrcode.vue": "^1.7.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
+    "vue-sweetalert2": "^3.0.5",
     "vuetify": "^2.2.11",
     "vuex": "^3.1.3"
   },
