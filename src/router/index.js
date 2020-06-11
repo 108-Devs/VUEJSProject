@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import CreateEQR from '../views/CreateEQR.vue'
+import SuccessEQR from '../views/SuccessEQR.vue'
+import EmergencyEQR from '../views/EmergencyEQR.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +17,16 @@ Vue.use(VueRouter)
     path: '/create',
     name: 'CreateEQR',
     component: CreateEQR
+  },
+  {
+    path: '/success/:id',
+    name: 'SuccessEQR',
+    component: SuccessEQR
+  },
+  {
+    path: '/emergency/:id',
+    name: 'EmergencyEQR',
+    component: EmergencyEQR
   }
 ]
 
