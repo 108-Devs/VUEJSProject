@@ -103,7 +103,7 @@
         <v-card-actions>
         <v-btn
             color="green"
-            @click="createEmergencyResponseLocation"
+            @click="generateQRForResident"
             block
             style="color: white;"
         >
@@ -205,6 +205,26 @@ export default {
         const [month, day, year] = date.split('/')
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
         },
+
+        generateQRForResident() {
+        //add emergency location into firestore
+        //update emergency document with firestore URL
+        //redirect to success page
+
+            var storageRef = storage.ref()
+                db.collection('EmergencyResidentInfo').add({
+                    name: 'dane',
+                    nric: 's993',
+                    bloodtype: 'A+',
+                    dateOfBirth: '01/01/90',
+                    gender: 'Male',
+                    medication: 'saasda',
+                    medicalhistory: 'v',
+                    allergics: 'ssa',
+                    address: 'asdasda',
+                    contact: '88989'
+                })
+        }
     },
 }
 </script>
