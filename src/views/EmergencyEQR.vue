@@ -76,7 +76,14 @@
     <v-dialog v-model="requestDialog" persistent max-width="290">
       <v-card>
         <v-card-title class="headline">Confirmation</v-card-title>
-        <v-card-text>You are about to submit an official emergency request.</v-card-text>
+        <v-card-text>An OTP will be send to your mobile phone via SMS.</v-card-text>
+        <v-otp-input
+            class="d-flex justify-center"
+            ref="otpInput"
+            input-classes="otp-input"
+            separator="-"
+            :num-inputs="6">
+        </v-otp-input>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="red darken-1" text @click="requestDialog=false">Cancel</v-btn>
@@ -147,5 +154,14 @@
 </script>
 
 <style>
-
+.otp-input {
+  width: 35px;
+  height: 40px;
+  padding: 1px;
+  margin: 0 3px;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
 </style>
