@@ -147,8 +147,6 @@ import firebase from 'firebase'
 import db, {storage} from '@/firebase/init'
 
 export default {
-    methods: {
-    },
     computed: {
         imageLabel() {
             if(this.placeType == 'Vehicle') {
