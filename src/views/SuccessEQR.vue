@@ -14,7 +14,7 @@
         <v-card-actions>
         <v-btn
             color="green"
-            @click="createEmergencyResponseLocation"
+            @click="downloadQR"
             block
             style="color: white;"
         >
@@ -28,6 +28,10 @@
 <script>
 import QrcodeVue from 'qrcode.vue'
 import db, {storage} from '@/firebase/init'
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 export default {
     data() {
         return {
@@ -44,7 +48,9 @@ export default {
         })
     },
     methods: {
-
+        downloadQR(){
+            
+        }
     }
 }
 </script>
