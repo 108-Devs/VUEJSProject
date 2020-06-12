@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import CreateEQR from '../views/CreateEQR.vue'
 import SuccessEQR from '../views/SuccessEQR.vue'
 import EmergencyEQR from '../views/EmergencyEQR.vue'
+import CreateQRForResidents from '../views/CreateQRForResidents.vue'
+import CreateQRForResidentscopy from '../views/CreateQRForResidentscopy.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,16 @@ Vue.use(VueRouter)
     path: '/emergency/:id',
     name: 'EmergencyEQR',
     component: EmergencyEQR
+  },
+  {
+    path: '/createqrforresidents',
+    name: 'CreateQRForResidents',
+    component: CreateQRForResidents
+  },
+  {
+    path: '/createqrforresidentscopy',
+    name: 'CreateQRForResidentscopy',
+    component: CreateQRForResidentscopy
   }
 ]
 
