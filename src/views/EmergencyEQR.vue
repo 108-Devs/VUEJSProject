@@ -186,6 +186,11 @@ export default {
         onConfirmSubmit() {
             this.requestDialog = false
             this.snackbar = true
+            db.collection('EmergencyRequests').add({
+                timestamp: Date.now(),
+                location: this.$route.params.id,
+                contact: this.currentContact,
+            })
         }
     }
 
