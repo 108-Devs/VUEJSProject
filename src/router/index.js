@@ -7,6 +7,7 @@ import EmergencyEQR from '../views/EmergencyEQR.vue'
 import CreateQRForResidents from '../views/CreateQRForResidents.vue'
 import SuccessQRForResidents from '../views/SuccessQRForResidents.vue'
 import AdminRequests from '../views/AdminRequests.vue'
+import CreateQRForBlocks from '../views/CreateQRForBlocks.vue'
 
 
 Vue.use(VueRouter)
@@ -38,8 +39,8 @@ Vue.use(VueRouter)
     component: CreateQRForResidents
   },
   {
-    path: '/successqrforresident/:id',
     name: 'SuccessQRForResidents',
+    path: '/successqrforresident/:id',
     component: SuccessQRForResidents
   },
   {
@@ -47,6 +48,11 @@ Vue.use(VueRouter)
     name: 'AdminRequests',
     component: AdminRequests
   },
+  {
+    path: '/createqrforblocks',
+    name: 'CreateQRForBlocks',
+    component: CreateQRForBlocks
+  }
 ]
 
 const router = new VueRouter({
