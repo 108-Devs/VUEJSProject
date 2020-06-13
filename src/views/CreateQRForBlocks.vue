@@ -99,8 +99,8 @@ export default {
 
                 var storageRef = storage.ref()
                 db.collection('EmergencyLocations').add({
-                    postalcode:this.residentPostalCode,
-                    address: this.residentAddress,
+                    postalcode:this.blockPostalCode,
+                    address: this.blockAddress,
                     img: null,
                     url: null
                 }).then(ref => {
