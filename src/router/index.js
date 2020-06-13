@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import CreateEQR from '../views/CreateEQR.vue'
 import SuccessEQR from '../views/SuccessEQR.vue'
 import EmergencyEQR from '../views/EmergencyEQR.vue'
+import AdminRequests from '../views/AdminRequests.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,12 @@ Vue.use(VueRouter)
     path: '/emergency/:id',
     name: 'EmergencyEQR',
     component: EmergencyEQR
-  }
+  },
+  {
+    path: '/admin',
+    name: 'AdminRequests',
+    component: AdminRequests
+  },
 ]
 
 const router = new VueRouter({
