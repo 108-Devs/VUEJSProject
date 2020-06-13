@@ -5,6 +5,7 @@ import CreateEQR from '../views/CreateEQR.vue'
 import SuccessEQR from '../views/SuccessEQR.vue'
 import EmergencyEQR from '../views/EmergencyEQR.vue'
 import CreateQRForResidents from '../views/CreateQRForResidents.vue'
+import SuccessQRForResidents from '../views/SuccessQRForResidents.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/createqrforresidents',
     name: 'CreateQRForResidents',
     component: CreateQRForResidents
+  },
+  {
+    path: '/successqrforresident/:id',
+    name: 'SuccessQRForResidents',
+    component: SuccessQRForResidents
   }
 ]
 

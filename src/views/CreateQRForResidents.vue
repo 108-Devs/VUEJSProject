@@ -224,7 +224,7 @@ export default {
                                 'url': 'https://scdf-eqr.web.app/emergency/'+ref.id
                             }).then(() => {
                                 console.log('updated item img')
-                                this.$router.push({name: 'SuccessEQR', params:
+                                this.$router.push({name: 'SuccessQRForResidents', params:
                                     {
                                         id: ref.id,
                                     }
