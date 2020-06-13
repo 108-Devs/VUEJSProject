@@ -1,21 +1,25 @@
 # scdf108devs
 
-## Project setup
+## a) Project description
+
+## b) Pitch video
+
+## c) Solution architecture
+
+## d) Project link
+
+http://scdf-eqr.web.app/
+
+## e) Project roadmap
+
+## f) Project setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
 npm run build
 ```
 
-### Using SCDF Emergency QR Web App
+### g) Using SCDF Emergency QR Web App
 
 (Admins/Community first responders: steps 1-4)
 
@@ -45,4 +49,9 @@ which describes the location.
 
 http://scdf-eqr.web.app/admin
 
+## h) Live demo video
+
+## i) Project link
+
+Vue.js & Firebase (IBM Cloud Storage + Hosting in the future)
 
