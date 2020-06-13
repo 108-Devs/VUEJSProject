@@ -8,8 +8,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import { BootstrapDropdown } from 'vue-custom-google-autocomplete'
 
 Vue.config.productionTip = false
-Vue.use(VueSweetalert2);
-Vue.use('bootstrap-dropdown', BootstrapDropdown);
+
 
 new Vue({
   router,
@@ -18,4 +17,5 @@ new Vue({
   render: function (h) { return h(App) }
 }).$mount('#app')
 
-
+Vue.use(VueSweetalert2);
+Vue.use(BootstrapDropdown);

@@ -1,158 +1,157 @@
 <template>
-    <div>
-        <v-card
-                style="margin-top: 20px;"
-                class="mx-auto"
-                max-width="400"
+  <div>
+    <v-card
+        style="margin-top: 20px;"
+        class="mx-auto"
+        max-width="400"
+    >
+      <v-img
+          width="200px"
+          v-if="fileImgPath"
+          :src="fileImgPath"
+      >
+      </v-img>
+      <v-card-title class="d-flex justify-center">
+        Create an EMERGENCY QR
+      </v-card-title>
+      <div>
+        <div></div>
+        <v-card-text>
+          <v-select
+              :items="['Public', 'Workplace', 'Residential', 'Vehicle']"
+              v-model="placeType"
+              label="Type of place"
+          ></v-select>
+          <bootstrap-dropdown :options="options" @select="selected = $event" name="input-name"/>
+          <!--                <v-textarea-->
+          <!--                    v-if="checkPlaceType"-->
+          <!--                    v-model="locationOrCarplate"-->
+          <!--                    label="Location"-->
+          <!--                    placeholder="Enter address"-->
+          <!--                ></v-textarea>-->
+          <v-text-field
+              v-if="placeType && !checkPlaceType"
+              v-model="locationOrCarplate"
+              label="Vehicle Carplate"
+              placeholder="Enter carplate number"
+          ></v-text-field>
+          <v-file-input
+              accept="image/png, image/jpeg, image/bmp"
+              placeholder="Choose an image"
+              prepend-icon="mdi-camera"
+              :label="imageLabel"
+              @change="onFilePicked"
+          ></v-file-input>
+          <v-textarea
+              v-model="description"
+              label="Description"
+              placeholder="Enter description"
+          ></v-textarea>
+          <p v-if="placeType == 'Residential'">Enter details of persons at risk</p>
+          <v-simple-table v-if="people.length > 0">
+            <template v-slot:default>
+              <thead>
+              <tr>
+                <th class="text-left">Name</th>
+                <th class="text-left">Blood Type</th>
+                <th class="text-left"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="(item, index) in people" :key="index">
+                <td>{{ item.personName }}</td>
+                <td>{{ item.personBloodType }}</td>
+                <td>
+                  <v-btn @click="removePerson(index)" class="ma-2" text icon color="red lighten-2">
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                </td>
+              </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+          <v-btn v-if="placeType == 'Residential'" style="margin-top: 10px;" block @click="dialog = true"
+                 color="red" dark>Add Person
+          </v-btn>
+        </v-card-text>
+      </div>
+      <v-card-actions>
+        <v-btn
+            color="green"
+            @click="createEmergencyResponseLocation"
+            block
+            style="color: white;"
         >
-            <v-img
-                    width="200px"
-                    v-if="fileImgPath"
-                    :src="fileImgPath"
-            >
-            </v-img>
-            <v-card-title class="d-flex justify-center">
-                Create an EMERGENCY QR
-            </v-card-title>
-            <div>
-                <div></div>
-                <v-card-text>
-                    <v-select
-                            :items="['Public', 'Workplace', 'Residential', 'Vehicle']"
-                            v-model="placeType"
-                            label="Type of place"
-                    ></v-select>
-                    <template>
-                        <bootstrap-dropdown
-                        :options="options" @select="selected = $event" name="input-name"/>
-                    </template>
-                    <!--                <v-textarea-->
-                    <!--                    v-if="checkPlaceType"-->
-                    <!--                    v-model="locationOrCarplate"-->
-                    <!--                    label="Location"-->
-                    <!--                    placeholder="Enter address"-->
-                    <!--                ></v-textarea>-->
-                    <v-text-field
-                            v-if="placeType && !checkPlaceType"
-                            v-model="locationOrCarplate"
-                            label="Vehicle Carplate"
-                            placeholder="Enter carplate number"
-                    ></v-text-field>
-                    <v-file-input
-                            accept="image/png, image/jpeg, image/bmp"
-                            placeholder="Choose an image"
-                            prepend-icon="mdi-camera"
-                            :label="imageLabel"
-                            @change="onFilePicked"
-                    ></v-file-input>
-                    <v-textarea
-                            v-model="description"
-                            label="Description"
-                            placeholder="Enter description"
-                    ></v-textarea>
-                    <p v-if="placeType == 'Residential'">Enter details of persons at risk</p>
-                    <v-simple-table v-if="people.length > 0">
-                        <template v-slot:default>
-                            <thead>
-                            <tr>
-                                <th class="text-left">Name</th>
-                                <th class="text-left">Blood Type</th>
-                                <th class="text-left"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="(item, index) in people" :key="index">
-                                <td>{{ item.personName }}</td>
-                                <td>{{ item.personBloodType }}</td>
-                                <td>
-                                    <v-btn @click="removePerson(index)" class="ma-2" text icon color="red lighten-2">
-                                        <v-icon>mdi-delete</v-icon>
-                                    </v-btn>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </template>
-                    </v-simple-table>
-                    <v-btn v-if="placeType == 'Residential'" style="margin-top: 10px;" block @click="dialog = true"
-                           color="red" dark>Add Person
-                    </v-btn>
-                </v-card-text>
-            </div>
-            <v-card-actions>
-                <v-btn
-                        color="green"
-                        @click="createEmergencyResponseLocation"
-                        block
-                        style="color: white;"
-                >
-                    Generate Emergency QR
-                </v-btn>
-            </v-card-actions>
-        </v-card>
+          Generate Emergency QR
+        </v-btn>
+      </v-card-actions>
+    </v-card>
 
 
-        <v-dialog v-model="dialog" persistent max-width="600px">
-            <v-card>
-                <v-card-title>
-                    <span class="headline">Person</span>
-                </v-card-title>
-                <v-card-text>
-                    <v-container>
-                        <v-row>
-                            <v-col cols="12" sm="6" md="4">
-                                <v-avatar size="100">
-                                    <img
-                                            src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                            alt="John"
-                                    >
-                                </v-avatar>
-                            </v-col>
-                        </v-row>
-                        <v-row>
-                            <v-col cols="12">
-                                <v-text-field label="Name" v-model="personName"></v-text-field>
-                            </v-col>
-                            <v-col cols="12">
-                                <v-textarea
-                                        label="Allergies"
-                                        required
-                                        v-model="personAllergies"
-                                ></v-textarea>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-text-field
-                                        label="Age"
-                                        type="number"
-                                        v-model="personAge"
-                                        required
-                                ></v-text-field>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-autocomplete
-                                        :items="['O+', 'O-', 'B+', 'B-', 'A+', 'A-', 'AB+', 'AB-']"
-                                        label="Blood Type"
-                                        v-model="personBloodType"
-                                        required
-                                ></v-autocomplete>
-                            </v-col>
-                        </v-row>
-                    </v-container>
-                </v-card-text>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="red darken-1" text @click="close">Cancel</v-btn>
-                    <v-btn color="blue darken-1" text @click="addPerson">Add</v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
-    </div>
+    <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Person</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="4">
+                <v-avatar size="100">
+                  <img
+                      src="https://cdn.vuetifyjs.com/images/john.jpg"
+                      alt="John"
+                  >
+                </v-avatar>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field label="Name" v-model="personName"></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-textarea
+                    label="Allergies"
+                    required
+                    v-model="personAllergies"
+                ></v-textarea>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                    label="Age"
+                    type="number"
+                    v-model="personAge"
+                    required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-autocomplete
+                    :items="['O+', 'O-', 'B+', 'B-', 'A+', 'A-', 'AB+', 'AB-']"
+                    label="Blood Type"
+                    v-model="personBloodType"
+                    required
+                ></v-autocomplete>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="red darken-1" text @click="close">Cancel</v-btn>
+          <v-btn color="blue darken-1" text @click="addPerson">Add</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
     import firebase from 'firebase'
     import db, {storage} from '@/firebase/init'
+    import { BootstrapDropdown } from 'vue-custom-google-autocomplete'
 
     export default {
+        components: {'bootstrap-dropdown': BootstrapDropdown},
         computed: {
             imageLabel() {
                 if (this.placeType == 'Vehicle') {
