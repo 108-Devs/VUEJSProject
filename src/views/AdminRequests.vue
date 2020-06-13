@@ -38,7 +38,10 @@ export default {
             return moment(timestamp).format('HH:mm DD-MMM-YYYY')
         },
         getLocationName(id) {
-            return this.locations.find( location => location.id == id).address
+            if(this.locations.find( location => location.id == id).address)
+                return this.locations.find( location => location.id == id).address
+            else 
+                return this.locations.find( location => location.id == id).locationOrCarplate
         },
         retrieveLocations(){
             db.collection('EmergencyLocations').get()
