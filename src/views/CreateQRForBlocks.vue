@@ -5,12 +5,6 @@
         class="mx-auto"
         max-width="400"
     >
-        <v-img
-            width="200px"
-            v-if="fileImgPath" 
-            :src="fileImgPath" 
-        >
-        </v-img>
         <v-card-title class="d-flex justify-center">
             Create QR Code For Blocks
         </v-card-title>
