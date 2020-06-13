@@ -60,21 +60,21 @@
             label="Gender"
             ></v-select>
             <v-textarea
-            name="residentMedication"
+            v-model="residentMedication"
             filled
             label="Medications"
             auto-grow
             value=""
             ></v-textarea>
             <v-textarea
-            name="residentMedicationHistory"
+            v-model="residentMedicationHistory"
             filled
             label="Medication History"
             auto-grow
             value=""
             ></v-textarea>
             <v-textarea
-            name="residentAllergies"
+            v-model="residentAllergies"
             filled
             label="Resident's Allergies"
             auto-grow
@@ -82,11 +82,11 @@
             ></v-textarea>
             <v-text-field
             label="Postal Code"
-            name="residentPostalCode"
+            v-model="residentPostalCode"
             placeholder="Enter Postal Code"
             ></v-text-field>
             <v-textarea
-            name="residentAddress"
+            v-model="residentAddress"
             filled
             label="Resident's Address"
             auto-grow
@@ -94,7 +94,7 @@
             ></v-textarea>
             <v-text-field
             label="Contact Number"
-            name="residentContactNumber"
+            v-model="residentContactNumber"
             placeholder="Enter Contact Number"
             ></v-text-field>
             </v-card-text>
@@ -112,61 +112,6 @@
         </v-card-actions>
     </v-card>
 
-
-    <v-dialog v-model="dialog" persistent max-width="600px">
-      <v-card>
-        <v-card-title>
-          <span class="headline">Person</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>             
-            <v-col cols="12" sm="6" md="4">
-                <v-avatar size="100">
-                    <img
-                        src="https://cdn.vuetifyjs.com/images/john.jpg"
-                        alt="John"
-                    >
-                </v-avatar>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field label="Name" v-model="personName"></v-text-field>
-              </v-col>
-            <v-col cols="12">
-                <v-textarea
-                  label="Allergies"
-                  required
-                  v-model="personAllergies"
-                ></v-textarea>
-              </v-col>
-            <v-col cols="12" sm="6">
-                <v-text-field
-                  label="Age"
-                  type="number"
-                  v-model="personAge"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="['O+', 'O-', 'B+', 'B-', 'A+', 'A-', 'AB+', 'AB-']"
-                  label="Blood Type"
-                  v-model="personBloodType"
-                  required
-                ></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="red darken-1" text @click="close">Cancel</v-btn>
-          <v-btn color="blue darken-1" text @click="addPerson">Add</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </div>
 </template>
 
@@ -176,9 +121,22 @@ import db, {storage} from '@/firebase/init'
 
 export default {
      data: vm => ({
-      date: new Date().toISOString().substr(0, 10),
-      dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
-      dobOfResident: false,
+            placeType: null,
+
+            date: new Date().toISOString().substr(0, 10),
+            dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
+            dobOfResident: false,
+            residentName: null,
+            residentNric: null,
+            bloodType: null,
+            dobOfResident: null,
+            residentGender: null,
+            residentMedication: null,
+            residentMedicationHistory: null,
+            residentAllergies: null,
+            residentPostalCode: null,
+            residentAddress: null,
+            residentContactNumber: null,
     }),
     computed: {
          computedDateFormatted () {
@@ -211,18 +169,46 @@ export default {
         //update emergency document with firestore URL
         //redirect to success page
 
-            var storageRef = storage.ref()
+            //var storageRef = storage.ref()
                 db.collection('EmergencyResidentInfo').add({
-                    name: 'dane',
-                    nric: 's993',
-                    bloodtype: 'A+',
-                    dateOfBirth: '01/01/90',
-                    gender: 'Male',
-                    medication: 'saasda',
-                    medicalhistory: 'v',
-                    allergics: 'ssa',
-                    address: 'asdasda',
-                    contact: '88989'
+                    name: this.residentName,
+                    nric: this.residentNric,
+                    bloodtype: this.bloodType,
+                    dateOfBirth: this.dobOfResident,
+                    gender: this.residentGender,
+                    medication: this.residentMedication,
+                    medicalhistory: this.residentMedicationHistory,
+                    allergics: this.residentAllergies,
+                    postalcode:this.residentPostalCode,
+                    address: this.residentAddress,
+                    contact: this.residentContactNumber
+                }).then(ref => {
+                    var locationPic = storageRef.child("/locations/"+ref.id+".jpg")
+                    locationPic.put(this.file).then(snapshot => {
+                        snapshot.ref.getDownloadURL().then((downloadURL) => {
+                            this.itemImgUrl = downloadURL
+                            db.collection('EmergencyLocations').doc(ref.id).update({
+                                'img': this.itemImgUrl,
+                                'url': 'https://scdf-eqr.web.app/emergency/'+ref.id
+                            }).then(() => {
+                                var data = {
+                                    placeType: this.placeType,
+                                    locationOrCarplate: this.locationOrCarplate,
+                                    description: this.description,
+                                    people: this.people,
+                                    img: this.itemImgUrl,
+                                    url: 'https://scdf-eqr.web.app/emergency/'+ref.id,
+                                }
+                                console.log('updated item img')
+                                this.$router.push({name: 'SuccessEQR', params:
+                                    {
+                                        id: ref.id,
+                                        data: data
+                                    }
+                                })
+                            })
+                        })
+                    })
                 })
         }
     },
