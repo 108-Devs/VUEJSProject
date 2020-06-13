@@ -151,12 +151,8 @@
 <script>
     import firebase from 'firebase'
     import db, {storage} from '@/firebase/init'
-    import BootstrapDopdown from "./BootstrapDropdown";
-    import BootstrapDropdown from "./BootstrapDropdown";
 
     export default {
-        components: {BootstrapDropdown, BootstrapDopdown},
-        methods: {},
         computed: {
             imageLabel() {
                 if (this.placeType == 'Vehicle') {
@@ -189,6 +185,18 @@
                 personAge: null,
                 personBloodType: null,
 
+                selected: null,
+                options: {
+                    apiKey: 'AIzaSyDYiPXuJmSY8VGJoi5-aVd5DyixopRGij4',
+                    deepSearch: true,
+                    cors: true,
+                    focus: false,
+                    params: {
+                        location: '45.52345,-122.67621',
+                        radius: 1000,
+                        language: 'en'
+                    }
+                }
             }
         },
         methods: {
@@ -263,31 +271,6 @@
                         })
                     })
                 })
-            }
-        }
-    }
-</script>
-
-<script>
-    import { BootstrapDropdown } from 'vue-custom-google-autocomplete'
-    export default {
-        components: {
-            BootstrapDropdown
-        },
-        data() {
-            return {
-                selected: null,
-                options: any = {
-                    apiKey: 'AIzaSyDYiPXuJmSY8VGJoi5-aVd5DyixopRGij4',
-                    deepSearch: true,
-                    cors: true,
-                    focus: false,
-                    params: {
-                        location: '45.52345,-122.67621',
-                        radius: 1000,
-                        language: 'en'
-                    }
-                }
             }
         }
     }
