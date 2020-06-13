@@ -6,8 +6,8 @@
             <tr>
             <th class="text-left">Timestamp</th>
             <th class="text-left">Contact</th>
-            <th class="text-left">Location</th>
             <th class="text-left">Description</th>
+            <th class="text-left">Location</th>
             </tr>
         </thead>
         <tbody>
