@@ -97,6 +97,22 @@
             v-model="residentContactNumber"
             placeholder="Enter Contact Number"
             ></v-text-field>
+            
+            <v-img
+            width="200px"
+            v-if="fileImgPath" 
+            :src="fileImgPath" 
+            >
+            </v-img>
+            
+            <v-file-input
+                    accept="image/png, image/jpeg, image/bmp"
+                    placeholder="Upload Image Of Resident's Apartment"
+                    prepend-icon="mdi-camera"
+                    :label="imageLabel"
+                    @change="onFilePicked"
+            ></v-file-input>
+
             </v-card-text>
 
         </div>
@@ -137,6 +153,9 @@ export default {
             residentPostalCode: null,
             residentAddress: null,
             residentContactNumber: null,
+            
+            file: null,
+            fileImgPath: null,
     }),
     computed: {
          computedDateFormatted () {
@@ -164,12 +183,23 @@ export default {
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
         },
 
+        onFilePicked(f) {
+        this.file = f
+        console.log(this.file)
+        var reader = new FileReader()
+        reader.onload = (e) => {
+          this.fileImgPath = e.target.result
+          console.log(this.fileImgPath)
+        }
+        reader.readAsDataURL(this.file);
+        },
+
         generateQRForResident() {
         //add emergency location into firestore
         //update emergency document with firestore URL
         //redirect to success page
 
-            //var storageRef = storage.ref()
+                var storageRef = storage.ref()
                 db.collection('EmergencyResidentInfo').add({
                     name: this.residentName,
                     nric: this.residentNric,
@@ -181,29 +211,22 @@ export default {
                     allergics: this.residentAllergies,
                     postalcode:this.residentPostalCode,
                     address: this.residentAddress,
-                    contact: this.residentContactNumber
+                    contact: this.residentContactNumber,
+                    img: null,
+                    url: null
                 }).then(ref => {
-                    var locationPic = storageRef.child("/locations/"+ref.id+".jpg")
+                    var locationPic = storageRef.child("/residentApartment/"+ref.id+".jpg")
                     locationPic.put(this.file).then(snapshot => {
                         snapshot.ref.getDownloadURL().then((downloadURL) => {
                             this.itemImgUrl = downloadURL
-                            db.collection('EmergencyLocations').doc(ref.id).update({
+                            db.collection('EmergencyResidentInfo').doc(ref.id).update({
                                 'img': this.itemImgUrl,
                                 'url': 'https://scdf-eqr.web.app/emergency/'+ref.id
                             }).then(() => {
-                                var data = {
-                                    placeType: this.placeType,
-                                    locationOrCarplate: this.locationOrCarplate,
-                                    description: this.description,
-                                    people: this.people,
-                                    img: this.itemImgUrl,
-                                    url: 'https://scdf-eqr.web.app/emergency/'+ref.id,
-                                }
                                 console.log('updated item img')
                                 this.$router.push({name: 'SuccessEQR', params:
                                     {
                                         id: ref.id,
-                                        data: data
                                     }
                                 })
                             })
