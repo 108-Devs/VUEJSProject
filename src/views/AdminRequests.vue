@@ -7,12 +7,14 @@
             <th class="text-left">Timestamp</th>
             <th class="text-left">Contact</th>
             <th class="text-left">Location</th>
+            <th class="text-left">Description</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(item, index) in orderRequest" :key="index">
             <td>{{ formatTimestamp(item.timestamp) }}</td>
             <td>{{ item.contact }}</td>
+            <td>{{ item.description }}</td>
             <td><v-btn>{{ getLocationName(item.location) }}</v-btn></td>
             </tr>
         </tbody>

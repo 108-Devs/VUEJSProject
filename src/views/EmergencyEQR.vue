@@ -149,6 +149,7 @@
                     timestamp: Date.now(),
                     location: this.$route.params.id,
                     contact: this.currentContact,
+                    description: this.incidentDescription
                 })
             }
         }
