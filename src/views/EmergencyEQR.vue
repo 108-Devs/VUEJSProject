@@ -28,34 +28,30 @@
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-subtitle>Location Type</v-list-item-subtitle>
-              <v-list-item-title>{{ emergencyLocation.placeType }}</v-list-item-title>
+              <v-list-item-subtitle>Address</v-list-item-subtitle>
+              <v-list-item-title>{{ emergencyLocation.address }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-subtitle v-if="emergencyLocation.placeType == 'Vehicle'">
-                Carplate
+              <v-list-item-subtitle>
+                Postal Code
               </v-list-item-subtitle>
-              <v-list-item-subtitle v-else>
-                Location
-              </v-list-item-subtitle>
-              <v-list-item-title>{{ emergencyLocation.locationOrCarplate }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-subtitle>Description</v-list-item-subtitle>
-              <v-list-item-title>{{ emergencyLocation.description }}</v-list-item-title>
+              <v-list-item-title>{{ emergencyLocation.postalcode }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
         <v-card-text>
-          <v-text-field
+          <v-text-field outlined
               v-model="currentContact"
-              label="Mobile Phone"
+              label="Mobile Phone (required)"
               placeholder="Enter number"
           ></v-text-field>
+          <v-textarea auto-grow outlined
+              v-model="incidentDescription"
+              label="Description of the incident (optional)"
+              placeholder="Enter"
+          ></v-textarea>
           <v-alert type="error" v-if="error">
             {{ error }}
           </v-alert>
@@ -114,26 +110,28 @@
     export default {
         data() {
             return {
-                showEmergencyLocationDialog: false,
                 requestDialog: false,
                 snackbar: false,
                 emergencyLocation: null,
-
-                currentLocation: null, //TODO: get from google api
                 currentContact: null, //POC of person who initiated the request
 
                 file: null,
                 fileImgPath: null,
+                incidentDescription: null,
                 error: null
             }
         },
         created() {
-            db.collection('EmergencyLocations').doc(this.$route.params.id)
-                .get().then(doc => {
-                console.log('Hi')
-                console.log(doc.data())
-                this.emergencyLocation = doc.data()
-            })
+            const collectionList = ['EmergencyLocations', 'EmergencyResidentInfo']
+            for (const cname of collectionList) {
+                console.log(cname);
+                db.collection(cname).doc(this.$route.params.id).get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            this.emergencyLocation = doc.data()
+                        }
+                    })
+            }
         },
         methods: {
             submitNewEmergencyRequest() {
