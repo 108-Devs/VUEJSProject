@@ -4,7 +4,11 @@ import Home from '../views/Home.vue'
 import CreateEQR from '../views/CreateEQR.vue'
 import SuccessEQR from '../views/SuccessEQR.vue'
 import EmergencyEQR from '../views/EmergencyEQR.vue'
+import CreateQRForResidents from '../views/CreateQRForResidents.vue'
+import SuccessQRForResidents from '../views/SuccessQRForResidents.vue'
+import AdminRequests from '../views/AdminRequests.vue'
 import CreateQRForBlocks from '../views/CreateQRForBlocks.vue'
+
 
 Vue.use(VueRouter)
 
@@ -28,6 +32,21 @@ Vue.use(VueRouter)
     path: '/emergency/:id',
     name: 'EmergencyEQR',
     component: EmergencyEQR
+  },
+  {
+    path: '/createqrforresidents',
+    name: 'CreateQRForResidents',
+    component: CreateQRForResidents
+  },
+  {
+    name: 'SuccessQRForResidents',
+    path: '/successqrforresident/:id',
+    component: SuccessQRForResidents
+  },
+  {
+    path: '/admin',
+    name: 'AdminRequests',
+    component: AdminRequests
   },
   {
     path: '/createqrforblocks',
