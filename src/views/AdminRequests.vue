@@ -10,10 +10,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(item, index) in requests" :key="index">
-            <td>{{ item.timestamp }}</td>
+            <tr v-for="(item, index) in orderRequest" :key="index">
+            <td>{{ formatTimestamp(item.timestamp) }}</td>
             <td>{{ item.contact }}</td>
-            <td><v-btn>{{ item.location }}</v-btn></td>
+            <td><v-btn>{{ getLocationName(item.location) }}</v-btn></td>
             </tr>
         </tbody>
         </template>
@@ -24,10 +24,47 @@
 <script>
 import firebase from 'firebase'
 import db, {storage} from '@/firebase/init'
+import moment from 'moment'
 export default {
     data() {
         return {
-            requests: []
+            requests: [],
+            locations: [],
+
+        }
+    },
+    methods: {
+        formatTimestamp(timestamp) {
+            return moment(timestamp).format('HH:mm DD-MMM-YYYY')
+        },
+        getLocationName(id) {
+            return this.locations.find( location => location.id == id).address
+        },
+        retrieveLocations(){
+            db.collection('EmergencyLocations').get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    var data = doc.data()
+                    data.id = doc.id
+                    console.log(data)
+                    this.locations.push(data)
+                })
+                db.collection('EmergencyResidentInfo').get()
+                .then(snapshot => {
+                    snapshot.forEach(doc => {
+                        var data = doc.data()
+                        data.id = doc.id
+                        this.locations.push(data)
+                    })
+                })
+            })
+        }
+    },
+    computed: {
+        orderRequest() {
+            return this.requests.sort((a,b) => {
+                return a.timestamp > b.timestamp
+            })
         }
     },
     created() {
@@ -55,6 +92,7 @@ export default {
             }
           })
         })
+        this.retrieveLocations()
     }
 }
 </script>
