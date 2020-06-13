@@ -68,7 +68,7 @@ export default {
     computed: {
         orderRequest() {
             return this.requests.sort((a,b) => {
-                return a.timestamp > b.timestamp
+                return b.timestamp - a.timestamp
             })
         }
     },
