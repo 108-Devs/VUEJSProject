@@ -3,13 +3,22 @@
 # 108 Dev: SCDF EMERGENCY QR | SCDFXIBM
 
 ## a) Project description
+![enter image description here](https://user-images.githubusercontent.com/22294841/84587820-0a828300-ae55-11ea-93a6-71b940de088f.png)
+</br>
 The SCDF Emergency QR Web App aims to save lives through the fastest means. The solution is viable as no app installation is required. Therefore, no concern for app user retention. This app will prepare us to be an emergency ready nation.
+
+We face the issue of responder having difficulties in identifying the location they were at and could delay the efforts from SCDF from reaching out to victims in time. Through the use of technology, we will be able to make effective use of our smartphone to do an incident report at ease. There are millions of application out in the market, and user retention is one of the issues that developers faced. With this web application in place, we do not need to worry about having users have an app installed on their phone. 
+
+On top of that, we do not need responder to register for an account to verify their identity. We make use of a unique identity of a user through phone number, and they can only make a report once they confirm their phone number. To tackle unnecessary abuse of the reporting procedure. The QR code is also placed at a specific residential area where sticker of QR code can be pasted by Grassroot leaders / Social Worker /PA staff / SCDF staff where detailed information of residents is placed in the database of the SCDF. The residents do not need to fear the misuse of their personal data as this information can only be reflected on SCDF side of the portal. We also made a portal to allow SCDF to view the case reported through this web app. 
+
+There are still many potentials that we see in this web app where we can implement more useful services such as reputable providers such as IBM and the services that they can provide.
+
 
 **Team Members**
 
  
 
- - Daniel Kwang
+ - Daniel Kwang [**Team Leader**]
  - Joshua Lim
  - Henry J.
  - Charles Goh
