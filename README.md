@@ -49,7 +49,7 @@ This QR Code can be pasted on wall of the blocks or units
 The information is to allow reporter to confirm the location as well as fast verification of identity of reporter so there will be no fake or prank calls.
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84586093-d43f0680-ae48-11ea-8f2b-c707d649cd29.png)
 </br>
-**Admin Portal For SCDF To View On Cases**
+**Admin Portal For SCDF To View On Cases** </br>
 [https://scdf-eqr.web.app/admin](https://scdf-eqr.web.app/admin)
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585970-ae653200-ae47-11ea-877c-d1a2a012bdef.png)
 
