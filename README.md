@@ -28,9 +28,9 @@ https://youtu.be/uVDpByaDroU
 SCDF EMERGENCY QR WEB APP
 
 **FOR SCDF STAFF / Grassroot Leaders / Volunteers**
-Admin Page For Creation (After Authentication) 
-[Due to time constraint, no authentication was added yet]
-http://scdf-eqr.web.app/
+Admin Page For Creation (After Authentication)</br> 
+[Due to time constraint, no authentication was added yet]</br>
+http://scdf-eqr.web.app/ </br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585800-f3886480-ae45-11ea-8ae3-30162fa43cf8.png)
 
 Page For Authorised User To Create QR Code For Blocks (Location Based)
