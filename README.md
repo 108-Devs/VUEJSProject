@@ -33,24 +33,25 @@ Admin Page For Creation (After Authentication)</br>
 http://scdf-eqr.web.app/ </br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585800-f3886480-ae45-11ea-8ae3-30162fa43cf8.png)
 
-Page For Authorised User To Create QR Code For Blocks (Location Based)
+Page For Authorised User To Create QR Code For Blocks (Location Based)</br>
 [https://scdf-eqr.web.app/createqrforblocks](https://scdf-eqr.web.app/createqrforblocks)
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585801-f4b99180-ae45-11ea-9155-e379c32d45c5.png)
 
-Page For Authorised User To Create QR Code For Specific Resident(Unit Based)
+Page For Authorised User To Create QR Code For Specific Resident(Unit Based)</br>
 [https://scdf-eqr.web.app/createqrforresidents](https://scdf-eqr.web.app/createqrforresidents)
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585802-f5522800-ae45-11ea-9fac-30c679e129e3.png)
 
-**Sample QR Code Generated**
-This QR Code can be pasted on wall of the blocks or units
+**Sample QR Code Generated**</br>
+This QR Code can be pasted on wall of the blocks or units</br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84586092-d30dd980-ae48-11ea-9521-eda4d3c9d795.png)
 
-**Sample Interface After Reporter Scan The QR Code**
-The information is to allow reporter to confirm the location as well as fast verification of identity of reporter so there will be no fake or prank calls.
+**Sample Interface After Reporter Scan The QR Code**</br>
+The information is to allow reporter to confirm the location as well as fast verification </br>
+of identity of reporter so there will be no fake or prank calls.</br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84586093-d43f0680-ae48-11ea-8f2b-c707d649cd29.png)
 </br>
 **Admin Portal For SCDF To View On Cases** </br>
-[https://scdf-eqr.web.app/admin](https://scdf-eqr.web.app/admin)
+[https://scdf-eqr.web.app/admin](https://scdf-eqr.web.app/admin)</br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585970-ae653200-ae47-11ea-877c-d1a2a012bdef.png)
 
 ## e) Project roadmap
