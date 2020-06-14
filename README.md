@@ -18,6 +18,9 @@ The SCDF Emergency QR Web App aims to save lives through the fastest means. The 
 ## b) Pitch video
 We have created the pitch video for the SCDF EMERGENCY QR Web App
 https://youtu.be/uVDpByaDroU
+</br>
+You may also refer to our slides for better understanding of the SCDF EMERGENCY QR Web App </br>
+https://docs.google.com/presentation/d/1jbMbdSd1Yxq1plnPIA-BjZSrsXm0-pTwoAU3lKTLWTA/edit?usp=sharing
 
 ## c) Solution architecture
 **Current Architecture**
