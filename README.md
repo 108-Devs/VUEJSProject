@@ -1,4 +1,5 @@
 
+
 # 108 Dev: SCDF EMERGENCY QR | SCDFXIBM
 
 ## a) Project description
@@ -34,11 +35,11 @@ http://scdf-eqr.web.app/ </br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585800-f3886480-ae45-11ea-8ae3-30162fa43cf8.png)
 
 Page For Authorised User To Create QR Code For Blocks (Location Based)</br>
-[https://scdf-eqr.web.app/createqrforblocks](https://scdf-eqr.web.app/createqrforblocks)
+[https://scdf-eqr.web.app/createqrforblocks](https://scdf-eqr.web.app/createqrforblocks)</br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585801-f4b99180-ae45-11ea-9155-e379c32d45c5.png)
 
 Page For Authorised User To Create QR Code For Specific Resident(Unit Based)</br>
-[https://scdf-eqr.web.app/createqrforresidents](https://scdf-eqr.web.app/createqrforresidents)
+[https://scdf-eqr.web.app/createqrforresidents](https://scdf-eqr.web.app/createqrforresidents)</br>
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585802-f5522800-ae45-11ea-9fac-30c679e129e3.png)
 
 **Sample QR Code Generated**</br>
