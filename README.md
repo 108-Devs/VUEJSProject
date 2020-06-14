@@ -18,7 +18,7 @@ There are still many potentials that we see in this web app where we can impleme
 
  
 
- - Daniel Kwang
+ - Daniel Kwang [**Team Leader**]
  - Joshua Lim
  - Henry J.
  - Charles Goh
