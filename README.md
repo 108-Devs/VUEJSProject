@@ -2,7 +2,17 @@
 # 108 Dev: SCDF EMERGENCY QR | SCDFXIBM
 
 ## a) Project description
-work on it later
+The SCDF Emergency QR Web App aims to save lives through the fastest means. The solution is viable as no app installation is required. Therefore, no concern for app user retention. This app will prepare us to be an emergency ready nation.
+
+**Team Members**
+
+ 
+
+ - Daniel Kwang
+ - Joshua Lim
+ - Henry J.
+ - Charles Goh
+ - Ernest Oh
 
 ## b) Pitch video
 We have created the pitch video for the SCDF EMERGENCY QR Web App
@@ -89,6 +99,10 @@ https://youtu.be/slB5LItcD6c
 You may also click on the link below to refer to the guide to using our web app
 [link](#project-link)
 ## i) Solution Used
-
-Vue.js & Firebase (IBM Cloud Storage + Hosting in the future)
+We used VUE.JS
+![enter image description here](https://user-images.githubusercontent.com/22294841/84586899-9a243380-ae4d-11ea-82bb-64bcd42679a9.png)
+Firebase
+![enter image description here](https://user-images.githubusercontent.com/22294841/84586900-9b556080-ae4d-11ea-8cdc-49d64ea46370.png)
+We are also exploring into IBM Cloud Storage solution & Hosting in the future
+![enter image description here](https://user-images.githubusercontent.com/22294841/84586931-cd66c280-ae4d-11ea-900b-5fe0afec5397.png)
 
