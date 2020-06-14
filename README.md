@@ -14,11 +14,12 @@ https://youtu.be/uVDpByaDroU
 
 **Projected Future Architecture**
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84565751-e31caf00-ad9d-11ea-94b4-1bcae9473e8e.jpg)
-## d) Project link <a name="projectlink"></a>
+## d) Project link
 SCDF EMERGENCY QR WEB APP
 
 **FOR SCDF STAFF / Grassroot Leaders / Volunteers**
-Admin Page For Creation (After Authentication [Due to time constraint, no authentication was added yet])
+Admin Page For Creation (After Authentication) 
+[Due to time constraint, no authentication was added yet]
 http://scdf-eqr.web.app/
 ![enter image description here](https://user-images.githubusercontent.com/22294841/84585800-f3886480-ae45-11ea-8ae3-30162fa43cf8.png)
 
@@ -85,7 +86,8 @@ http://scdf-eqr.web.app/admin
 We have an in depth video demonstration for our SCDF EMERGENCY QR 
 https://youtu.be/slB5LItcD6c
 
-[link](#projectlink)
+You may also click on the link below to refer to the guide to using our web app
+[link](#project-link)
 ## i) Solution Used
 
 Vue.js & Firebase (IBM Cloud Storage + Hosting in the future)
